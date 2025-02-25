@@ -1,0 +1,20 @@
+{
+    "name": "Heroku Docker Deploy",
+    "description": "Python Specfic things done here",
+    "logo": "https://telegra.ph/file/d8d194c18562472a7c1f1.jpg",
+    "keywords": [
+     "deployer",
+     "productivity"
+    ],
+    "repository": "https://github.com/symit-dev/HerokuDeployDocker",
+    "website": "https://github.com/symit-dev/HerokuDeployDocker/",
+    "success_url": "https://github.com/symit-dev/HerokuDeployDocker/",
+    "stack": "container",
+    "env": {
+     "GIT_URL": {
+      "description": "Put Your URL FROM WHERE IT WILL GET CLONE ",
+      "value": "",
+      "required": true
+     }
+    }
+  }
