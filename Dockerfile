@@ -8,19 +8,27 @@ WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
 
 # Update package list and install necessary utilities
-RUN apt -qq update && apt -qq install -y wget locales
+RUN apt -qq update && apt -qq install -y \
+    wget locales sudo
+
+# Create a new user 'appuser' and add it to the sudo group
+RUN useradd -m -s /bin/bash appuser && \
+    echo "appuser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+# Switch to the new user
+USER appuser
 
 # Copy requirements.txt to the working directory
-COPY requirements.txt .
+COPY --chown=appuser:appuser requirements.txt .
 
-# Install dependencies from requirements.txt using pip3
+# Install dependencies using pip
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application files to the working directory
-COPY . .
+COPY --chown=appuser:appuser . .
 
 # Generate locale settings
-RUN locale-gen en_US.UTF-8
+RUN sudo locale-gen en_US.UTF-8
 
 # Set environment variables for locale
 ENV LANG en_US.UTF-8
