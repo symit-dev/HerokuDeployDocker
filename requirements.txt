@@ -8,6 +8,5 @@ google-auth-httplib2
 google-auth-oauthlib
 oauth2client
 pymongo[srv]
-boto3
 bbpb
 requests
