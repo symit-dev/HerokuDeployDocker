@@ -9,7 +9,9 @@ RUN chmod 777 /usr/src/app
 
 # Update package list and install necessary utilities
 RUN apt -qq update && apt -qq install -y \
-    wget git locales sudo zip unzip p7zip-full p7zip-rar unar
+    wget git locales sudo zip unzip p7zip-full p7zip-rar unar \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Create a new user 'appuser' and add it to the sudo group
 RUN useradd -m -s /bin/bash appuser && \
