@@ -16,11 +16,7 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     p7zip-full \
-    unar && \
-    apt-get install -y software-properties-common && \
-    add-apt-repository ppa:sevenzip-team/stable && \
-    apt-get update && \
-    apt-get install -y p7zip-rar
+    unar
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
