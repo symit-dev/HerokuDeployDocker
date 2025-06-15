@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y \
     apt-get update && \
     apt-get install -y p7zip-rar
 
-    RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Create a new user 'appuser' and add it to the sudo group
 RUN useradd -m -s /bin/bash appuser && \
