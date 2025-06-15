@@ -8,8 +8,21 @@ WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
 
 # Update package list and install necessary utilities
-RUN apt-get update && apt-get install -y wget git locales sudo zip unzip p7zip-full p7zip-rar unar
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y \
+    wget \
+    git \
+    locales \
+    sudo \
+    zip \
+    unzip \
+    p7zip-full \
+    unar && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository ppa:sevenzip-team/stable && \
+    apt-get update && \
+    apt-get install -y p7zip-rar
+
+    RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Create a new user 'appuser' and add it to the sudo group
 RUN useradd -m -s /bin/bash appuser && \
