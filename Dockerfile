@@ -1,5 +1,5 @@
 # Use the official Python 3.11 image as base
-FROM python:3.11-buster
+FROM python:3.11-bookworm
 
 # Set working directory
 WORKDIR /usr/src/app
